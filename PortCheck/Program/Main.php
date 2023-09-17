@@ -19,7 +19,7 @@ class Main
         $error_message = null;
         while (true)
         {
-            Console::Write("Port: ");
+            Console::Write("Порт: ");
             $port = intval(Console::ReadLine());
 
             if ($port == 0)
@@ -30,7 +30,7 @@ class Main
 
             if ($port < 0 || $port > 65535)
             {
-                Console::WriteLine("Incorrect port '" . $port . "'", ForegroundColors::BLACK, BackgroundColors::RED);
+                Console::WriteLine("Порт '" . $port . "' некорректный", ForegroundColors::BLACK, BackgroundColors::RED);
                 continue;
             }
 
@@ -38,13 +38,13 @@ class Main
 
             if (is_resource($connection))
             {
-                Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is OPEN", ForegroundColors::GREEN);
+                Console::WriteLine("Порт '" . $port . "' на хосте '" . $this->host . "' ОТКРЫТ.", ForegroundColors::GREEN);
                 fclose($connection);
             }
 
             else
             {
-                Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is CLOSED.", ForegroundColors::RED);
+                Console::WriteLine("Порт '" . $port . "' на хосте '" . $this->host . "' ЗАКРЫТ.", ForegroundColors::RED);
             }
         }
     }
@@ -56,8 +56,8 @@ class Main
 
     private function SetHost() : void
     {
-        Console::WriteLine("\n\n * * Leave blank to check port in your network", ForegroundColors::WHITE);
-        Console::Write("Host: ");
+        Console::WriteLine("\n\n * * Оставьте пустым, если хотите проверить порт в своей сети", ForegroundColors::WHITE);
+        Console::Write("Хост: ");
         $this->host = Console::ReadLine();
 
         if ($this->host == "")
