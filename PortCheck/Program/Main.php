@@ -41,10 +41,16 @@ class Main
                 Console::WriteLine("Порт '" . $port . "' на хосте '" . $this->host . "' ОТКРЫТ.", ForegroundColors::GREEN);
                 fclose($connection);
             }
-
             else
             {
-                Console::WriteLine("Порт '" . $port . "' на хосте '" . $this->host . "' ЗАКРЫТ.", ForegroundColors::RED);
+                if ($error_code == 0)
+                {
+                    Console::WriteLine("Хост '" . $this->host . "' не найден", ForegroundColors::WHITE, BackgroundColors::RED);
+                }
+                else
+                {
+                    Console::WriteLine("Порт '" . $port . "' на хосте '" . $this->host . "' ЗАКРЫТ.", ForegroundColors::RED);
+                }
             }
         }
     }
