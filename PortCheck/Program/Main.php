@@ -38,13 +38,20 @@ class Main
 
             if (is_resource($connection))
             {
-                Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is OPEN", ForegroundColors::GREEN);
+                Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is OPEN.", ForegroundColors::GREEN);
                 fclose($connection);
             }
-
             else
             {
-                Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is CLOSED.", ForegroundColors::RED);
+                if ($error_code == 0)
+                {
+                    Console::WriteLine("Host '" . $this->host . "' not found", ForegroundColors::WHITE, BackgroundColors::RED);
+                }
+                else
+                {
+                    Console::WriteLine("Port '" . $port . "' on host '" . $this->host . "' is CLOSED.", ForegroundColors::RED);
+                }
+
             }
         }
     }
